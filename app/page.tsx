@@ -3,8 +3,8 @@
 import "./styles/mdb.min.css";
 import "./styles/snippet.css";
 
+/*
 import {
-  MDBBtn,
   MDBCard,
   MDBCardBody,
   MDBCardImage,
@@ -15,9 +15,6 @@ import {
   MDBCheckbox,
   MDBCol,
   MDBCollapse,
-  MDBContainer,
-  MDBFooter,
-  MDBIcon,
   MDBInput,
   MDBModal,
   MDBModalBody,
@@ -37,6 +34,9 @@ import {
   MDBTextArea,
   MDBTypography,
 } from "mdb-react-ui-kit";
+*/
+import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
+
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -106,20 +106,29 @@ export default function Home() {
           </ul>
         </nav>
 
-        
-        <MDBContainer style={{zIndex:"-1", position:"fixed"}} fluid className="fixed-top mt-4 mb-1">
+        <MDBContainer
+          style={{ zIndex: "-1", position: "fixed" }}
+          fluid
+          className="fixed-top mt-4 mb-1"
+        >
           <h1 className="display-5 fw-bold text-center">
             Explore The World's Art
           </h1>
         </MDBContainer>
-        
       </header>
-      <main style={{ position: "relative", top: "90px"}}>
+      <main style={{ position: "relative", top: "90px" }}>
         <MDBContainer className="container py-4">
           <div className="row g-0 mb-5">
             <div className="col-lg-6 col-md-12 mb-4 mb-lg-0">
               {/* Card */}
-              <div style={{borderColor:"#26395A", borderStyle:"none solid none none", borderWidth:"25px"}} className="bg-glass shadow-4-strong h-100">
+              <div
+                style={{
+                  borderColor: "#26395A",
+                  borderStyle: "none solid none none",
+                  borderWidth: "25px",
+                }}
+                className="bg-glass shadow-4-strong h-100"
+              >
                 {/* Card header */}
 
                 <div className="p-4">
@@ -145,7 +154,14 @@ export default function Home() {
 
             <div className="col-lg-6 mb-4 mb-lg-0">
               {/* Card */}
-              <div style={{borderColor:"#26395A", borderStyle:"none none none solid", borderWidth:"25px"}} className="bg-glass shadow-4-strong h-100">
+              <div
+                style={{
+                  borderColor: "#26395A",
+                  borderStyle: "none none none solid",
+                  borderWidth: "25px",
+                }}
+                className="bg-glass shadow-4-strong h-100"
+              >
                 {/* Card header */}
                 <div className="p-4">
                   <div className="row align-items-center">
