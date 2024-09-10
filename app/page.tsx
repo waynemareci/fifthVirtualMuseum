@@ -37,10 +37,8 @@ import {
 */
 import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
 
-import { useState, useEffect } from "react";
-
 export default function Home() {
-  const [showNavNoToggler, setShowNavNoToggler] = useState(false);
+
   return (
     <>
       <header>
