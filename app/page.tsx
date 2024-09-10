@@ -1,101 +1,280 @@
-import Image from "next/image";
+"use client";
+
+import "./styles/mdb.min.css";
+import "./styles/snippet.css";
+
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardText,
+  MDBCardTitle,
+  MDBCarousel,
+  MDBCarouselItem,
+  MDBCheckbox,
+  MDBCol,
+  MDBCollapse,
+  MDBContainer,
+  MDBFooter,
+  MDBIcon,
+  MDBInput,
+  MDBModal,
+  MDBModalBody,
+  MDBModalContent,
+  MDBModalDialog,
+  MDBModalFooter,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBNavbar,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarNav,
+  MDBNavbarBrand,
+  MDBNavbarToggler,
+  MDBRipple,
+  MDBRow,
+  MDBTextArea,
+  MDBTypography,
+} from "mdb-react-ui-kit";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [showNavNoToggler, setShowNavNoToggler] = useState(false);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <header>
+        {/* Sidenav */}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        <nav
+          id="sidenav-4"
+          className="sidenav bg-glass opacity-100"
+          data-mdb-color="light"
+          data-mdb-mode="side"
+          data-mdb-slim="true"
+          data-mdb-slim-collapsed="true"
+          data-mdb-content="#slim-content"
+          style={{
+            top: "115px",
+            width: "70px",
+            height: "100vh",
+            position: "fixed",
+            transition: "0.3s linear",
+            transform: "translateX(0%)",
+          }}
+        >
+          <div className="sidenav-item mb-2">
+            <a
+              id="slim-toggler"
+              className="sidenav-link d-flex justify-content-center border-bottom ripple-surface ripple-surface-light"
+            >
+              <i className="fas fa-chevron-circle-right"></i>
+            </a>
+          </div>
+
+          <ul className="sidenav-menu">
+            <li className="sidenav-item">
+              <a className="sidenav-link">
+                <i className="fas fa-chart-area fa-fw me-3"></i>
+                <span data-mdb-slim="false">Website traffic</span>
+              </a>
+            </li>
+            <li className="sidenav-item">
+              <a className="sidenav-link">
+                <i className="fas fa-chart-line fa-fw me-3"></i>
+                <span data-mdb-slim="false">Analytics</span>
+              </a>
+            </li>
+            <li className="sidenav-item">
+              <a className="sidenav-link">
+                <i className="fas fa-chart-pie fa-fw me-3"></i>
+                <span data-mdb-slim="false">SEO</span>
+              </a>
+            </li>
+            <li className="sidenav-item">
+              <a className="sidenav-link">
+                <i className="fas fa-money-bill fa-fw me-3"></i>
+                <span data-mdb-slim="false">Sales</span>
+              </a>
+            </li>
+            <li className="sidenav-item">
+              <a className="sidenav-link">
+                <i className="fas fa-users fa-fw me-3"></i>
+                <span data-mdb-slim="false">Users</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        
+        <MDBContainer style={{zIndex:"-1", position:"fixed"}} fluid className="fixed-top mt-4 mb-1">
+          <h1 className="display-5 fw-bold text-center">
+            Explore The World's Art
+          </h1>
+        </MDBContainer>
+        
+      </header>
+      <main style={{ position: "relative", top: "90px"}}>
+        <MDBContainer className="container py-4">
+          <div className="row g-0 mb-5">
+            <div className="col-lg-6 col-md-12 mb-4 mb-lg-0">
+              {/* Card */}
+              <div style={{borderColor:"#26395A", borderStyle:"none solid none none", borderWidth:"25px"}} className="bg-glass shadow-4-strong h-100">
+                {/* Card header */}
+
+                <div className="p-4">
+                  <div className="row align-items-center">
+                    <div className="mb-4 mb-md-0">
+                      <p className="display-6 text-center mb-2">
+                        Space and Time
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card header */}
+
+                {/* Card body */}
+                <div className="p-4">
+                  <canvas id="line-chart" height="200px"></canvas>
+                </div>
+                {/* Card body */}
+              </div>
+              {/* Card */}
+            </div>
+
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              {/* Card */}
+              <div style={{borderColor:"#26395A", borderStyle:"none none none solid", borderWidth:"25px"}} className="bg-glass shadow-4-strong h-100">
+                {/* Card header */}
+                <div className="p-4">
+                  <div className="row align-items-center">
+                    <div className="mb-4 mb-md-0">
+                      <p className="display-6 text-center mb-2">Artists</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Card header */}
+
+                {/* Card body */}
+                <div className="p-4 pb-0">
+                  <div className="vector-map" id="my-map"></div>
+                </div>
+                {/* Card body */}
+              </div>
+              {/* Card */}
+            </div>
+          </div>
+          <div className="row gx-lg-5 mb-5">
+            <div className="col-lg-6 col-md-12 mb-4 mb-lg-0">
+              {/* Card */}
+              <div className="bg-glass shadow-4-strong h-100">
+                {/* Card header */}
+
+                <div className="p-4">
+                  <div className="row align-items-center">
+                    <div className="mb-4 mb-md-0">
+                      <p className="display-6 text-center mb-2">Movements</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card header */}
+
+                {/* Card body */}
+                <div className="p-4">
+                  <canvas id="line-chart" height="200px"></canvas>
+                </div>
+                {/* Card body */}
+              </div>
+              {/* Card */}
+            </div>
+
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              {/* Card */}
+              <div className="bg-glass shadow-4-strong h-100">
+                {/* Card header */}
+                <div className="p-4">
+                  <div className="row align-items-center">
+                    <div className="mb-4 mb-md-0">
+                      <p className="display-6 text-center mb-2">Random</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Card header */}
+
+                {/* Card body */}
+                <div className="p-4 pb-0">
+                  <div className="vector-map" id="my-map"></div>
+                </div>
+                {/* Card body */}
+              </div>
+              {/* Card */}
+            </div>
+          </div>
+        </MDBContainer>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      <MDBFooter
+        style={{ position: "relative", marginTop: "25px" }}
+        className="text-center"
+      >
+        <MDBContainer className="py-4">
+          <MDBBtn
+            href="#!"
+            style={{ backgroundColor: "#3b5998" }}
+            floating
+            className="m-2"
+          >
+            <MDBIcon fab icon="facebook-f" />
+          </MDBBtn>
+          <MDBBtn
+            href="#!"
+            style={{ backgroundColor: "#55acee" }}
+            floating
+            className="m-2"
+          >
+            <MDBIcon fab icon="twitter" />
+          </MDBBtn>
+          <MDBBtn
+            href="#!"
+            style={{ backgroundColor: "#dd4b39" }}
+            floating
+            className="m-2"
+          >
+            <MDBIcon fab icon="google" />
+          </MDBBtn>
+          <MDBBtn
+            href="#!"
+            style={{ backgroundColor: "#ac2bac" }}
+            floating
+            className="m-2"
+          >
+            <MDBIcon fab icon="instagram" />
+          </MDBBtn>
+          <MDBBtn
+            href="#!"
+            style={{ backgroundColor: "#0082ca" }}
+            floating
+            className="m-2"
+          >
+            <MDBIcon fab icon="linkedin-in" />
+          </MDBBtn>
+          <MDBBtn
+            href="#!"
+            style={{ backgroundColor: "#222222" }}
+            floating
+            className="m-2"
+          >
+            <MDBIcon fab icon="github" />
+          </MDBBtn>
+        </MDBContainer>
+        <div
+          className="text-center p-3"
+          style={{ backgroundColor: "hsla(218, 62.2%, 35%, 0.2)" }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          © 2024 Copyright: Wayne Mareci
+        </div>
+      </MDBFooter>
+    </>
   );
 }
