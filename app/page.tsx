@@ -38,7 +38,6 @@ import {
 import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
 
 export default function Home() {
-
   return (
     <>
       <header>
@@ -110,7 +109,7 @@ export default function Home() {
           className="fixed-top mt-4 mb-1"
         >
           <h1 className="display-5 fw-bold text-center">
-            Explore The World's Art
+            Explore The World&apos;s Art
           </h1>
         </MDBContainer>
       </header>
