@@ -36,6 +36,7 @@ import {
 } from "mdb-react-ui-kit";
 */
 import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
+import Globe from "./globe";
 
 export default function Home() {
   return (
@@ -131,9 +132,7 @@ export default function Home() {
                 <div className="p-4">
                   <div className="row align-items-center">
                     <div className="mb-4 mb-md-0">
-                      <p className="display-6 text-center mb-2">
-                        Space and Time
-                      </p>
+                      <h3 className="text-center mb-2">Time and Place</h3>
                     </div>
                   </div>
                 </div>
@@ -141,9 +140,7 @@ export default function Home() {
                 {/* Card header */}
 
                 {/* Card body */}
-                <div className="p-4">
-                  <canvas id="line-chart" height="200px"></canvas>
-                </div>
+                <Globe />
                 {/* Card body */}
               </div>
               {/* Card */}
@@ -163,7 +160,7 @@ export default function Home() {
                 <div className="p-4">
                   <div className="row align-items-center">
                     <div className="mb-4 mb-md-0">
-                      <p className="display-6 text-center mb-2">Artists</p>
+                      <h3 className="text-center mb-2">Artists</h3>
                     </div>
                   </div>
                 </div>
@@ -187,7 +184,7 @@ export default function Home() {
                 <div className="p-4">
                   <div className="row align-items-center">
                     <div className="mb-4 mb-md-0">
-                      <p className="display-6 text-center mb-2">Movements</p>
+                      <h3 className="text-center mb-2">Style</h3>
                     </div>
                   </div>
                 </div>
@@ -196,7 +193,7 @@ export default function Home() {
 
                 {/* Card body */}
                 <div className="p-4">
-                  <canvas id="line-chart" height="200px"></canvas>
+                  <canvas id="line-chart" height="250px"></canvas>
                 </div>
                 {/* Card body */}
               </div>
@@ -210,7 +207,7 @@ export default function Home() {
                 <div className="p-4">
                   <div className="row align-items-center">
                     <div className="mb-4 mb-md-0">
-                      <p className="display-6 text-center mb-2">Random</p>
+                      <h3 className="text-center mb-2">Random</h3>
                     </div>
                   </div>
                 </div>
