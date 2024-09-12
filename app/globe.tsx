@@ -32,11 +32,12 @@ export default function Globe() {
       const maxSpinZoom = 5;
       const slowSpinZoom = 3;
       let userInteracting = false;
-      let spinEnabled = true;
+      //let spinEnabled = true;
 
       const spinGlobe = () => {
         const zoom = globe.getZoom()
-        if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
+        //if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
+            if (!userInteracting && zoom < maxSpinZoom) {
             let distancePerSecond = 360 / secondsPerRevolution
             if (zoom > slowSpinZoom) {
                 const zoomDif = (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom)
