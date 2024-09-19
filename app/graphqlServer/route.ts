@@ -137,7 +137,8 @@ const typeDefs = `
 
 const resolvers = {
   Business: {
-    waitTime: (obj: any, args: any, context: any, info: any) => {
+    //waitTime: (obj: any, args: any, context: any, info: any) => {
+      waitTime: () => {
       var options = [0, 5, 10, 15, 30, 45];
       return options[Math.floor(Math.random() * options.length)];
     },
@@ -146,7 +147,7 @@ const resolvers = {
 };
 
 // Read our Neo4j connection credentials from environment variables (see .env.local)
-const { NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD } = process.env;
+//const { NEO4J_URI, NEO4J_USERNAME, NEO4J_PASSWORD } = process.env;
 
 // Create a Neo4j driver instance to connect to Neo4j AuraDB
 const driver = neo4j.driver(

@@ -36,14 +36,16 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
 import Select from "react-select";
 import dynamic from "next/dynamic";
+/*
 const Wheel = dynamic(
   () => import("react-custom-roulette").then((mod) => mod.Wheel),
   { ssr: false }
 );
+*/
 
 import Globe from "./globe";
 import SpinWheel from "./SpinWheel";
@@ -63,13 +65,13 @@ const options: Instrument[] = [
   { value: "jazz", label: "Jazz" },
   { value: "orchestra", label: "Orchestra" },
 ];
-
+/*
 const data = [
   { option: "0", style: { backgroundColor: "green" } },
   { option: "1", style: { backgroundColor: "white" } },
   { option: "2" },
 ];
-
+*/
 const segments = [
   { segmentText: ' ', segColor: 'red' },
   { segmentText: ' ', segColor: '#FBC31C' },
@@ -83,10 +85,12 @@ const segments = [
 ];
 
 export default function Home() {
+  /*
   const [selectedOption, setSelectedOption] = useState<ArrayObjectSelectState>({
     selectedInstrument: null,
   });
   const [mustSpin, setMustSpin] = useState(false);
+*/
 
   /*
   useEffect(() => {
@@ -94,11 +98,13 @@ export default function Home() {
   }, []);
 */
 
+/*
   const handleSpinClick = () => {
     if (!mustSpin) {
       setMustSpin(true);
     }
   };
+*/
 
   return (
     <>
