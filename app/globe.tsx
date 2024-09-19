@@ -35,17 +35,17 @@ export default function Globe() {
       //let spinEnabled = true;
 
       const spinGlobe = () => {
-        const zoom = globe.getZoom()
+        const zoom = globe.getZoom();
         //if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
-            if (!userInteracting && zoom < maxSpinZoom) {
-            let distancePerSecond = 360 / secondsPerRevolution
-            if (zoom > slowSpinZoom) {
-                const zoomDif = (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom)
-                distancePerSecond *= zoomDif
-            }
-            const center = globe.getCenter()
-            center.lng -= distancePerSecond
-            globe.easeTo({ center, duration: 1000, easing: (n) => n })
+        if (!userInteracting && zoom < maxSpinZoom) {
+          let distancePerSecond = 360 / secondsPerRevolution;
+          if (zoom > slowSpinZoom) {
+            const zoomDif = (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+            distancePerSecond *= zoomDif;
+          }
+          const center = globe.getCenter();
+          center.lng -= distancePerSecond;
+          globe.easeTo({ center, duration: 1000, easing: (n) => n });
         }
       };
 
@@ -58,11 +58,26 @@ export default function Globe() {
         spinGlobe();
       });
 
-      globe.on('moveend', () => {
+      globe.on('dragend', () => {
+        userInteracting = false
         spinGlobe()
       })
 
-      spinGlobe()
+      globe.on('pitchend', () => {
+        userInteracting = false
+        spinGlobe()
+      })
+
+      globe.on('rotateend', () => {
+        userInteracting = false
+        spinGlobe()
+      })
+
+      globe.on("moveend", () => {
+        spinGlobe();
+      });
+
+      spinGlobe();
     }
   }, [mapContainerRef, map]);
 

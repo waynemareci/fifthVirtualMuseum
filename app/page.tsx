@@ -2,6 +2,7 @@
 
 import "./styles/mdb.min.css";
 import "./styles/snippet.css";
+import "./styles/wheel.css";
 
 /*
 import {
@@ -35,10 +36,70 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 */
+import { useEffect, useState } from "react";
 import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
+import Select from "react-select";
+import dynamic from "next/dynamic";
+const Wheel = dynamic(
+  () => import("react-custom-roulette").then((mod) => mod.Wheel),
+  { ssr: false }
+);
+
 import Globe from "./globe";
+import SpinWheel from "./SpinWheel";
+
+interface ArrayObjectSelectState {
+  selectedInstrument: Instrument | null;
+}
+
+interface Instrument {
+  value: string;
+  label: string;
+}
+
+const options: Instrument[] = [
+  { value: "blues", label: "Blues" },
+  { value: "rock", label: "Rock" },
+  { value: "jazz", label: "Jazz" },
+  { value: "orchestra", label: "Orchestra" },
+];
+
+const data = [
+  { option: "0", style: { backgroundColor: "green" } },
+  { option: "1", style: { backgroundColor: "white" } },
+  { option: "2" },
+];
+
+const segments = [
+  { segmentText: ' ', segColor: 'red' },
+  { segmentText: ' ', segColor: '#FBC31C' },
+  { segmentText: ' ', segColor: 'lime' },
+  { segmentText: ' ', segColor: 'green' },
+  { segmentText: ' ', segColor: '#14BED4' },
+  { segmentText: ' ', segColor: 'blue' },
+  { segmentText: ' ', segColor: '#7249BA' },
+  { segmentText: ' ', segColor: 'green' },
+  // Add more segments as needed
+];
 
 export default function Home() {
+  const [selectedOption, setSelectedOption] = useState<ArrayObjectSelectState>({
+    selectedInstrument: null,
+  });
+  const [mustSpin, setMustSpin] = useState(false);
+
+  /*
+  useEffect(() => {
+    setMustSpin(true);
+  }, []);
+*/
+
+  const handleSpinClick = () => {
+    if (!mustSpin) {
+      setMustSpin(true);
+    }
+  };
+
   return (
     <>
       <header>
@@ -110,7 +171,7 @@ export default function Home() {
           className="fixed-top mt-4 mb-1"
         >
           <h1 className="display-5 fw-bold text-center">
-            Explore The World&apos;s Art
+            Explore The World&apos;s Visual Art
           </h1>
         </MDBContainer>
       </header>
@@ -147,79 +208,115 @@ export default function Home() {
             </div>
 
             <div className="col-lg-6 mb-4 mb-lg-0">
-              {/* Card */}
-              <div
-                style={{
-                  borderColor: "#26395A",
-                  borderStyle: "none none none solid",
-                  borderWidth: "25px",
-                }}
-                className="bg-glass shadow-4-strong h-100"
-              >
-                {/* Card header */}
-                <div className="p-4">
-                  <div className="row align-items-center">
-                    <div className="mb-4 mb-md-0">
-                      <h3 className="text-center mb-2">Artists</h3>
+              <div className="row g-0 mb-5">
+                {/* Card */}
+                <div
+                  style={{
+                    borderColor: "#26395A",
+                    borderStyle: "none none none solid",
+                    borderWidth: "25px",
+                  }}
+                  className="bg-glass shadow-4-strong"
+                >
+                  {/* Card header */}
+                  <div className="p-4 pb-0">
+                    <div className="row align-items-center">
+                      <div className="mb-4 mb-md-0">
+                        <h3 className="text-center mb-2">Pick an Artist</h3>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* Card header */}
+                  {/* Card header */}
 
-                {/* Card body */}
-                <div className="p-4 pb-0">
-                  <div className="vector-map" id="my-map"></div>
+                  {/* Card body */}
+                  <div style={{ height: "150px" }} className="p-4 pb-0">
+                    <Select
+                      placeholder={"Search..."}
+                      isMulti
+                      unstyled
+                      options={options}
+                      isSearchable={true}
+                    />
+                  </div>
+                  {/* Card body */}
                 </div>
-                {/* Card body */}
+                {/* Card */}
               </div>
-              {/* Card */}
-            </div>
-          </div>
-          <div className="row gx-lg-5 mb-5">
-            <div className="col-lg-6 col-md-12 mb-4 mb-lg-0">
-              {/* Card */}
-              <div className="bg-glass shadow-4-strong h-100">
-                {/* Card header */}
+              <div className="row g-0 mb-5">
+                {/* Card */}
+                <div
+                  style={{
+                    borderColor: "#26395A",
+                    borderStyle: "none none none solid",
+                    borderWidth: "25px",
+                  }}
+                  className="bg-glass shadow-4-strong"
+                >
+                  {/* Card header */}
 
-                <div className="p-4">
-                  <div className="row align-items-center">
-                    <div className="mb-4 mb-md-0">
-                      <h3 className="text-center mb-2">Style</h3>
+                  <div className="p-4 pb-0">
+                    <div className="row align-items-center">
+                      <div className="mb-4 mb-md-0">
+                        <h3 className="text-center mb-2">Choose a Style</h3>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Card header */}
+                  {/* Card header */}
 
-                {/* Card body */}
-                <div className="p-4">
-                  <canvas id="line-chart" height="250px"></canvas>
+                  {/* Card body */}
+                  <div style={{ height: "150px" }} className="p-4 pb-0">
+                    <Select
+                      placeholder={"Search..."}
+                      isMulti
+                      unstyled
+                      options={options}
+                      isSearchable={true}
+                    />
+                  </div>
+                  {/* Card body */}
                 </div>
-                {/* Card body */}
+                {/* Card */}
               </div>
-              {/* Card */}
-            </div>
-
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              {/* Card */}
-              <div className="bg-glass shadow-4-strong h-100">
-                {/* Card header */}
-                <div className="p-4">
-                  <div className="row align-items-center">
-                    <div className="mb-4 mb-md-0">
-                      <h3 className="text-center mb-2">Random</h3>
+              <div className="row g-0 mb-5">
+                {/* Card */}
+                <div
+                  style={{
+                    borderColor: "#26395A",
+                    borderStyle: "none none none solid",
+                    borderWidth: "25px",
+                  }}
+                  className="bg-glass shadow-4-strong"
+                >
+                  {/* Card header */}
+                  <div className="p-4">
+                    <div className="row align-items-center">
+                      <div className="mb-4 mb-md-0">
+                      <h3 className="text-center mb-1">Spin the Wheel</h3>
+                      <h6 className="text-center mb-2">for a random discovery!</h6>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {/* Card header */}
+                  {/* Card header */}
 
-                {/* Card body */}
-                <div className="p-4 pb-0">
-                  <div className="vector-map" id="my-map"></div>
+                  {/* Card body */}
+                  <div style={{marginLeft:"40%", marginTop:"-10px", marginBottom: "40px"}}>
+                  <SpinWheel segments={segments} onFinished={() => {return }}/>
+                  </div>
+                  {/*
+                  <div className="parent-container">
+                    <Wheel
+                      mustStartSpinning={mustSpin}
+                      prizeNumber={3}
+                      data={data}
+                    />
+                    <button onClick={handleSpinClick}>SPIN</button>
+                  </div>
+                  */}
+                  {/* Card body */}
                 </div>
-                {/* Card body */}
+                {/* Card */}
               </div>
-              {/* Card */}
             </div>
           </div>
         </MDBContainer>
@@ -280,10 +377,11 @@ export default function Home() {
         </MDBContainer>
         <div
           className="text-center p-3"
-          style={{ backgroundColor: "hsla(218, 62.2%, 35%, 0.2)" }}
+          style={{ backgroundColor: "black" }}
         >
-          © 2024 Copyright: Wayne Mareci
+          © 2024 Wayne Mareci
         </div>
+
       </MDBFooter>
     </>
   );
