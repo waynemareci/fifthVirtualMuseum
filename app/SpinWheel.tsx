@@ -26,15 +26,15 @@ const SpinWheel: React.FC<ISpinWheelProps> = ({
   onFinished,
   primaryColor = "black",
   contrastColor = "white",
-  buttonText = "",
+  //buttonText = "",
   isOnlyOnce = false,
   size = 45,
   upDuration = 100,
   downDuration = 600,
   fontFamily = "Arial",
-  arrowLocation = "center",
+  //arrowLocation = "center",
   showTextOnSpin = true,
-  isSpinSound = false,
+  //isSpinSound = false,
 }: ISpinWheelProps) => {
   // Separate arrays without nullish values
   const segmentTextArray = segments
@@ -47,7 +47,7 @@ const SpinWheel: React.FC<ISpinWheelProps> = ({
   const [isFinished, setFinished] = useState<boolean>(false);
   const [isStarted, setIsStarted] = useState<boolean>(false);
   
-  let currentSegment = "";
+  const currentSegment = "";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timerHandle: any = 0;
   const timerDelay = segmentTextArray.length;

@@ -36,10 +36,9 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 */
-import { useState } from "react";
 import { MDBBtn, MDBContainer, MDBFooter, MDBIcon } from "mdb-react-ui-kit";
 import Select from "react-select";
-import dynamic from "next/dynamic";
+//import dynamic from "next/dynamic";
 /*
 const Wheel = dynamic(
   () => import("react-custom-roulette").then((mod) => mod.Wheel),
@@ -50,9 +49,11 @@ const Wheel = dynamic(
 import Globe from "./globe";
 import SpinWheel from "./SpinWheel";
 
+/*
 interface ArrayObjectSelectState {
   selectedInstrument: Instrument | null;
 }
+*/
 
 interface Instrument {
   value: string;
